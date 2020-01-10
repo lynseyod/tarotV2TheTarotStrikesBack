@@ -8,9 +8,12 @@
 
 const theTarotStrikesBack = {};
 
-// api call for 78 random tarot cards
+// empty array of cards
+// helps 'set' past, present, future cards based on clicks
+theTarotStrikesBack.cardArray = [];
+
 // returns an array of the whole deck in random order
-// thank you tarot API for not making me write this function.
+// thank you tarot API for not making me write a randomize function
 theTarotStrikesBack.setCards = function() {
   $.ajax({
     url: `http://proxy.hackeryou.com`,
@@ -23,8 +26,9 @@ theTarotStrikesBack.setCards = function() {
       }
     }
   }).then((response) => {
+    // setting the cards in the deck
+    // I want to do this BEFORE people click so they can feel out the deck
     response.cards.forEach((card, index) => {
-      console.log(card)
       $(`.card-container:nth-of-type(${index+1})`)
       .append(`<h2>${card.name}</h2>
         <p>${card.desc}</p>
@@ -33,14 +37,16 @@ theTarotStrikesBack.setCards = function() {
   })
 }
 
+// event listener to select cards from the deck
 theTarotStrikesBack.cardSelect = function() {
   $('.card-container').on("click", function() {
-    if ($('.the-past').length === 0) {
-      $(this).addClass('the-past');
-    } else if ($('.the-present').length === 0) {
-      $(this).addClass('the-present');
-    } else if ($('.the-future').length === 0) {
-      $(this).addClass('the-future');
+    if (theTarotStrikesBack.cardArray.length < 3) { // only want to select 3 cards!
+      theTarotStrikesBack.cardArray.push($(this));
+      $(this).addClass("clickedIt"); // to remove them from the stack
+    } else { // if we've selected 3 cards, we show the results!
+      // theTarotStrikesBack.displayCards();
+      console.log("STOP CLICKING")
+      console.log(theTarotStrikesBack.cardArray)
     }
   })
 }

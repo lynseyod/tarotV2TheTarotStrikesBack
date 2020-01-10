@@ -213,9 +213,14 @@
   &:nth-of-type(78) {
     top: 50%;
   } 
-  &:hover {
+  &:hover,
+  &:focus {
     transform: translateX(-20px) translateY(-20px);
   }
+}
+
+.clickedIt {
+  display: none;
 }
 
 .card-container.the-past,
