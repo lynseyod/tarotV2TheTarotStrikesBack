@@ -1,3 +1,11 @@
+// STRETCH GOALS
+  // keep the card array
+  // reasign the card to the past, present, future when clicked
+  // display past, present, future cards when future is selected
+//THOUGHTS
+  // have the array of cards
+  // on click, push that card to past/present/future etc
+
 const theTarotStrikesBack = {};
 
 // api call for 78 random tarot cards
@@ -36,8 +44,6 @@ theTarotStrikesBack.cardSelect = function() {
     }
   })
 }
-
-
 
 theTarotStrikesBack.init = function() {
   theTarotStrikesBack.setCards();
