@@ -1,0 +1,32 @@
+.results {
+  height: 100vh;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.card-container.the-past,
+.card-container.the-present,
+.card-container.the-future {
+  height: 80vh;
+  width: 40vh;
+  * {
+    display: block;
+  }
+}
+
+.card-container.the-past {
+  left: 0;
+}
+
+.card-container.the-present {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.card-container.the-future {
+  left: 100%;
+  transform: translateX(-100%)
+}

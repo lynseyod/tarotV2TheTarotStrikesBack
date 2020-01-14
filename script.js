@@ -46,18 +46,22 @@ theTarotStrikesBack.setCards = () => {
     // I want to do this BEFORE people click so they can feel out the deck
     // I'm aware it's fake but... I WANT TO BELIEVE
     response.cards.forEach((card, index) => {
-      $(`.card-container:nth-of-type(${index+1})`)
-      .append(`<h2>${card.name}</h2>
-        <p>${card.desc}</p>
-        <p>${card.meaning_up}</p>`)
+      $('.cards').append(
+        `<button class="card-container">
+          <h2>${card.name}</h2>
+          <p>${card.desc}</p>
+          <p>${card.meaning_up}</p>
+        </button>`
+      )
     })
   })
 }
 
 theTarotStrikesBack.displayCards = () => {
+  $('main').append(`<div class="results"></div>`)
   theTarotStrikesBack.cardArray.forEach((card) => {
-    $('footer').append(
-      `<div class=${card.position}>
+    $('.results').append(
+      `<div class="card-container ${card.position}">
         ${card.cardHTML}
       </div>`
     )
@@ -67,13 +71,12 @@ theTarotStrikesBack.displayCards = () => {
 // event listener to select cards from the deck
 theTarotStrikesBack.cardSelect = () => {
   let clicks = 0;
-  $('.card-container').on("click", function() {
+  $('.cards').on("click", ".card-container", function() {
     if (clicks <= 2) { // only want to select 3 cards!
       theTarotStrikesBack.cardArray[clicks].cardHTML = ($(this)[0].innerHTML);
       $(this).addClass("clickedIt"); //remove them from the stack
       if (clicks === 2) {
         $('.card-container').unbind("click");
-        console.log(theTarotStrikesBack.cardArray)
         theTarotStrikesBack.displayCards();
       }
     }
