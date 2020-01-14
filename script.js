@@ -32,7 +32,7 @@ theTarotStrikesBack.cardArray = [
 // thank you tarot API for not making me write a randomize function
 theTarotStrikesBack.setCards = () => {
   $.ajax({
-    url: `http://proxy.hackeryou.com`,
+    url: `https://proxy.hackeryou.com`,
     method: `GET`,
     dataType: `json`,
     data: {
