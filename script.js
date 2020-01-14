@@ -6,26 +6,14 @@
   // have the array of cards
   // on click, push that card to past/present/future etc
 
-  //have card array:
-  // [{selection: 'the past'}, {selection: 'the present'}, {selection: 'the future'}]
-  // for (i = 0; i <= 2; ++i) {
-    // cardArray[i].card = whateverTheCardIs
-  // }
-
 const theTarotStrikesBack = {};
 
 // empty array of cards
 // helps 'set' past, present, future cards based on clicks
 theTarotStrikesBack.cardArray = [
-  {
-    position: 'the-past'
-  },
-  {
-    position: 'the-present'
-  },
-  {
-    position: 'the-future'
-  },
+  {position: 'the-past'},
+  {position: 'the-present'},
+  {position: 'the-future'},
 ];
 
 // returns an array of the whole deck in random order

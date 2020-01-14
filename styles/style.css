@@ -412,6 +412,7 @@ button.card-container:hover, button.card-container:focus {
 .results {
   height: 100vh;
   width: 90%;
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
