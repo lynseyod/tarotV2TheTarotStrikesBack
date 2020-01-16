@@ -8,9 +8,12 @@
 
 const theTarotStrikesBack = {};
 
+//empty array for our deck so we don't have to ping the API every time the user hits shuffle
+theTarotStrikesBack.deck = [];
+
 // empty array of cards
 // helps 'set' past, present, future cards based on clicks
-theTarotStrikesBack.cardArray = [
+theTarotStrikesBack.selectedCards = [
   {position: 'the-past'},
   {position: 'the-present'},
   {position: 'the-future'},
@@ -18,7 +21,7 @@ theTarotStrikesBack.cardArray = [
 
 // returns an array of the whole deck in random order
 // thank you tarot API for not making me write a randomize function
-theTarotStrikesBack.setCards = () => {
+theTarotStrikesBack.getCards = () => {
   $.ajax({
     url: `https://proxy.hackeryou.com`,
     method: `GET`,
@@ -33,21 +36,28 @@ theTarotStrikesBack.setCards = () => {
     // setting the cards in the deck
     // I want to do this BEFORE people click so they can feel out the deck
     // I'm aware it's fake but... I WANT TO BELIEVE
-    response.cards.forEach((card, index) => {
-      $('.cards').append(
-        `<button class="card-container">
-          <h2>${card.name}</h2>
-          <p>${card.desc}</p>
-          <p>${card.meaning_up}</p>
-        </button>`
-      )
+    response.cards.forEach((card) => {
+      theTarotStrikesBack.deck.push(card)
     })
+    theTarotStrikesBack.setCards(theTarotStrikesBack.deck)
   })
 }
 
-theTarotStrikesBack.displayCards = () => {
+theTarotStrikesBack.setCards = (cards) => {
+  cards.forEach((card, index) => {
+    $('.cards').append(
+      `<button class="card-container">
+        <h2>${card.name}</h2>
+        <p>${card.desc}</p>
+        <p>${card.meaning_up}</p>
+      </button>`
+    )
+  })
+}
+
+theTarotStrikesBack.displaySelectedCards = () => {
   $('main').append(`<div class="results"></div>`)
-  theTarotStrikesBack.cardArray.forEach((card) => {
+  theTarotStrikesBack.selectedCards.forEach((card) => {
     $('.results').append(
       `<div class="card-container ${card.position}">
         ${card.cardHTML}
@@ -61,11 +71,11 @@ theTarotStrikesBack.cardSelect = () => {
   let clicks = 0;
   $('.cards').on("click", ".card-container", function() {
     if (clicks <= 2) { // only want to select 3 cards!
-      theTarotStrikesBack.cardArray[clicks].cardHTML = ($(this)[0].innerHTML);
+      theTarotStrikesBack.selectedCards[clicks].cardHTML = ($(this)[0].innerHTML);
       $(this).addClass("clickedIt"); //remove them from the stack
       if (clicks === 2) {
         $('.card-container').unbind("click");
-        theTarotStrikesBack.displayCards();
+        theTarotStrikesBack.displaySelectedCards();
       }
     }
     clicks++;
@@ -73,7 +83,7 @@ theTarotStrikesBack.cardSelect = () => {
 }
 
 theTarotStrikesBack.init = () => {
-  theTarotStrikesBack.setCards();
+  theTarotStrikesBack.getCards();
   theTarotStrikesBack.cardSelect();
 }
 

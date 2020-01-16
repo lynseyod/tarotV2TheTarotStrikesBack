@@ -179,10 +179,18 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   overflow: hidden;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-image: linear-gradient(135deg, #130059 0%, #7a3295 40%, #30b13f 77%, #e49900 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+img {
+  max-width: 100%;
 }
 
 header {
@@ -207,6 +215,7 @@ header {
 header h1 {
   font-family: "Nothing You Could Do", cursive;
   font-size: 3.5rem;
+  text-shadow: 0 0 3px white, 0 0 5px white;
 }
 
 header a {
@@ -214,6 +223,27 @@ header a {
   bottom: 5%;
   font-size: 2rem;
   color: black;
+  text-decoration: none;
+  -webkit-animation: glow 0.5s ease-in-out infinite alternate;
+          animation: glow 0.5s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 5px white, 0 0 8px white, 0 0 10px;
+  }
+  to {
+    text-shadow: 0 0 10px white, 0 0 15px white, 0 0 20px white;
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px white, 0 0 8px white, 0 0 10px;
+  }
+  to {
+    text-shadow: 0 0 10px white, 0 0 15px white, 0 0 20px white;
+  }
 }
 
 .cards {
@@ -233,9 +263,9 @@ header a {
 .card-container {
   height: 300px;
   width: 150px;
-  border: 1px solid black;
+  border: 3px solid black;
   border-radius: 10px;
-  background-color: gray;
+  background-color: #202020;
   position: absolute;
   overflow: auto;
 }
