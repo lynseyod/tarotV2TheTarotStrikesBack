@@ -46,7 +46,7 @@ theTarotStrikesBack.getCards = () => {
 theTarotStrikesBack.setCards = (cards) => {
   cards.forEach((card, index) => {
     $('.cards').append(
-      `<button class="card-container">
+      `<button number="${index}" class="card-container">
         <h2>${card.name}</h2>
         <p>${card.desc}</p>
         <p>${card.meaning_up}</p>
@@ -66,13 +66,26 @@ theTarotStrikesBack.displaySelectedCards = () => {
   })
 }
 
+theTarotStrikesBack.shuffle = () => {
+  $('#shuffle').on("click", (event) => {
+    event.preventDefault();
+
+  })
+}
+
+// need to remove selected card from the 'deck' array
+// so when we 'shuffle' it doesn't allow us to select the same card again.
+// can I use the index to set a hidden attribute?
+
 // event listener to select cards from the deck
 theTarotStrikesBack.cardSelect = () => {
   let clicks = 0;
   $('.cards').on("click", ".card-container", function() {
     if (clicks <= 2) { // only want to select 3 cards!
       theTarotStrikesBack.selectedCards[clicks].cardHTML = ($(this)[0].innerHTML);
-      $(this).addClass("clickedIt"); //remove them from the stack
+      $(this).addClass("clickedIt"); //remove them from the stack visually
+      const thingIClicked = $(this);
+      console.log(thingIClicked.attr()); // remove them from the array actually
       if (clicks === 2) {
         $('.card-container').unbind("click");
         theTarotStrikesBack.displaySelectedCards();
@@ -84,6 +97,7 @@ theTarotStrikesBack.cardSelect = () => {
 
 theTarotStrikesBack.init = () => {
   theTarotStrikesBack.getCards();
+  // theTarotStrikesBack.shuffle();
   theTarotStrikesBack.cardSelect();
 }
 
