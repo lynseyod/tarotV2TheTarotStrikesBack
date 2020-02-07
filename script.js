@@ -52,7 +52,8 @@ theTarotStrikesBack.setCards = (cards) => {
 }
 
 theTarotStrikesBack.displaySelectedCards = () => {
-  console.log(theTarotStrikesBack.selectedCards)
+  console.log(theTarotStrikesBack.selectedCards);
+  console.log(theTarotStrikesBack.deck)
   // $('main').append(`<div class="results"></div>`)
   // theTarotStrikesBack.selectedCards.forEach((card) => {
   //   $('.results').append(
@@ -81,10 +82,11 @@ theTarotStrikesBack.cardSelect = () => {
     if (theTarotStrikesBack.selectedCards.length < 3) { //need to get to 3 cards
       // I need the index of the card I clicked (number attr)
       // I need to slice (splice?!) out the card from the original deck...
-      const indexOfCardIClicked = $(this).attr("number");
-      const shuffleDeck = theTarotStrikesBack.deck.splice(indexOfCardIClicked, 1);
-      console.log(shuffleDeck, theTarotStrikesBack.deck)
-      theTarotStrikesBack.selectedCards.push($(this))
+      // ASK ME HOW MUCH I BANGED MY HEAD ON THE COUNTER BEFORE I REALIZED IT WAS RETURNING A STRING INSTEAD OF A NUMBER
+      // Don't though. The memory is too painful.
+      const indexOfCardIClicked = parseInt($(this).attr("number"));
+      const newCard = theTarotStrikesBack.deck.slice(indexOfCardIClicked, indexOfCardIClicked + 1);
+      theTarotStrikesBack.selectedCards.push(newCard);
       $(this).addClass("clickedIt") //remove from the stack visually
       
       if (theTarotStrikesBack.selectedCards.length == 3) {
@@ -94,6 +96,10 @@ theTarotStrikesBack.cardSelect = () => {
     }
   })
 }
+
+// what attributes are returned? can I use the name as an identifier?
+// number doesn't work because index changes as I splice the deck!!
+// 'slice' on click, 'splice' on shuffle??
 
 theTarotStrikesBack.init = () => {
   theTarotStrikesBack.getCards();
