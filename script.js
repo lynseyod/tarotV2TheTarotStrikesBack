@@ -82,7 +82,8 @@ theTarotStrikesBack.cardSelect = () => {
       // I need the index of the card I clicked (number attr)
       // I need to slice (splice?!) out the card from the original deck...
       const indexOfCardIClicked = $(this).attr("number");
-      console.log(indexOfCardIClicked)
+      const shuffleDeck = theTarotStrikesBack.deck.splice(indexOfCardIClicked, 1);
+      console.log(shuffleDeck, theTarotStrikesBack.deck)
       theTarotStrikesBack.selectedCards.push($(this))
       $(this).addClass("clickedIt") //remove from the stack visually
       
