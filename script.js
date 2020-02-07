@@ -13,6 +13,10 @@ theTarotStrikesBack.deck = [];
 // empty array of cards
 theTarotStrikesBack.selectedCards = [];
 
+// empty array of cards to SPLICE on shuffle
+// only used when "shuffle" button is clicked.
+theTarotStrikesBack.cardsToSplice = [];
+
 theTarotStrikesBack.clicks = 0 // clicks cannot reset even if cards are shuffled.
 
 // returns an array of the whole deck in random order
@@ -40,6 +44,7 @@ theTarotStrikesBack.getCards = () => {
 }
 
 theTarotStrikesBack.setCards = (cards) => {
+  $('.cards').html('');
   cards.forEach((card, index) => {
     $('.cards').append(
       `<button number="${index}" class="card-container">
@@ -67,14 +72,29 @@ theTarotStrikesBack.displaySelectedCards = () => {
 theTarotStrikesBack.shuffle = () => {
   $('#shuffle').on("click", (event) => {
     event.preventDefault();
-
+    // nothing should happen if we shuffle after we've selected our cards.
+    if (theTarotStrikesBack.selectedCards.length < 3) {
+      // first remove selected cards from the "shufflable" deck
+      for (let i = 0; i < theTarotStrikesBack.cardsToSplice.length; i++) {
+        const newDeck = theTarotStrikesBack.deck.filter((card) => {
+          return card != theTarotStrikesBack.cardsToSplice[i];
+        })
+        theTarotStrikesBack.deck = newDeck;
+      }
+      // now take what we're left with and shuffle it.
+      // FISHER YATES
+      for (let i = theTarotStrikesBack.deck.length - 1; i > 0; i--) {
+        const randomNum = Math.floor(Math.random() * (i + 1));
+        const tempCard = theTarotStrikesBack.deck[i];
+        theTarotStrikesBack.deck[i] = theTarotStrikesBack.deck[randomNum];
+        theTarotStrikesBack.deck[randomNum] = tempCard;
+      }
+      theTarotStrikesBack.setCards(theTarotStrikesBack.deck);
+      document.location.reload();
+      // need to RELOAD. ugh where is react when I need it?
+    }
   })
 }
-
-// need to remove selected card from the 'deck' array
-// so when we 'shuffle' it doesn't allow us to select the same card again.
-// can I use the index to set a hidden attribute?
-// can I slice/splice to actually REMOVE it from the deck?
 
 // event listener to select cards from the deck
 theTarotStrikesBack.cardSelect = () => {
@@ -87,9 +107,9 @@ theTarotStrikesBack.cardSelect = () => {
       const indexOfCardIClicked = parseInt($(this).attr("number"));
       const newCard = theTarotStrikesBack.deck.slice(indexOfCardIClicked, indexOfCardIClicked + 1);
       theTarotStrikesBack.selectedCards.push(newCard);
+      theTarotStrikesBack.cardsToSplice.push(theTarotStrikesBack.deck[indexOfCardIClicked]);
       $(this).addClass("clickedIt") //remove from the stack visually
-      
-      if (theTarotStrikesBack.selectedCards.length == 3) {
+      if (theTarotStrikesBack.selectedCards.length == 3) { //when we've selected 3, FINISH
         $('.card-container').unbind("click");
         theTarotStrikesBack.displaySelectedCards();
       }
@@ -97,13 +117,9 @@ theTarotStrikesBack.cardSelect = () => {
   })
 }
 
-// what attributes are returned? can I use the name as an identifier?
-// number doesn't work because index changes as I splice the deck!!
-// 'slice' on click, 'splice' on shuffle??
-
 theTarotStrikesBack.init = () => {
   theTarotStrikesBack.getCards();
-  // theTarotStrikesBack.shuffle();
+  theTarotStrikesBack.shuffle();
   theTarotStrikesBack.cardSelect();
 }
 
