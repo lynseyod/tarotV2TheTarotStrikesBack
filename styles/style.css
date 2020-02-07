@@ -260,114 +260,121 @@ header a {
       flex-wrap: wrap;
 }
 
-#shuffle {
-  position: absolute;
-  top: -50px;
-}
-
+#shuffle,
 .card-container {
   height: 300px;
   width: 150px;
   border: 3px solid black;
   border-radius: 10px;
   background-color: #202020;
+}
+
+#shuffle {
+  position: absolute;
+}
+
+.card-container {
   position: absolute;
   overflow: auto;
 }
 
-.card-container * {
+.card-container p {
   display: none;
 }
 
-.card-container:first-of-type {
-  left: 15%;
-  background: firebrick;
-  -webkit-transform: rotate(20deg);
-          transform: rotate(20deg);
-}
-
 .card-container:nth-of-type(2) {
-  left: 20%;
+  left: 15%;
   background: lightblue;
   -webkit-transform: rotate(-10deg);
           transform: rotate(-10deg);
 }
 
 .card-container:nth-of-type(3) {
-  left: 25%;
+  left: 20%;
   background: palevioletred;
   -webkit-transform: rotate(-5deg);
           transform: rotate(-5deg);
 }
 
 .card-container:nth-of-type(4) {
-  left: 30%;
+  left: 25%;
   background: rebeccapurple;
   -webkit-transform: rotate(15deg);
           transform: rotate(15deg);
 }
 
 .card-container:nth-of-type(5) {
-  left: 35%;
+  left: 30%;
   background: blue;
   -webkit-transform: rotate(10deg);
           transform: rotate(10deg);
 }
 
 .card-container:nth-of-type(6) {
-  left: 40%;
+  left: 35%;
   background: peachpuff;
   -webkit-transform: rotate(-5deg);
           transform: rotate(-5deg);
 }
 
 .card-container:nth-of-type(7) {
-  left: 45%;
+  left: 40%;
   background: orange;
   -webkit-transform: rotate(5deg);
           transform: rotate(5deg);
 }
 
 .card-container:nth-of-type(8) {
-  left: 50%;
+  left: 45%;
   background: blueviolet;
   -webkit-transform: rotate(-10deg);
           transform: rotate(-10deg);
 }
 
 .card-container:nth-of-type(9) {
-  left: 55%;
+  left: 50%;
   background: red;
   -webkit-transform: rotate(5deg);
           transform: rotate(5deg);
 }
 
 .card-container:nth-of-type(10) {
-  left: 60%;
+  left: 55%;
   background: white;
   -webkit-transform: rotate(-5deg);
           transform: rotate(-5deg);
 }
 
 .card-container:nth-of-type(11) {
-  left: 65%;
+  left: 60%;
   background: lightgreen;
   -webkit-transform: rotate(-10deg);
           transform: rotate(-10deg);
 }
 
 .card-container:nth-of-type(12) {
-  left: 70%;
+  left: 65%;
   background: limegreen;
   -webkit-transform: rotate(5deg);
           transform: rotate(5deg);
 }
 
 .card-container:nth-of-type(13) {
-  left: 75%;
+  left: 70%;
   background: rosybrown;
   -webkit-transform: rotate(15deg);
           transform: rotate(15deg);
+}
+
+.card-container:nth-of-type(14) {
+  left: 75%;
+  background: firebrick;
+  -webkit-transform: rotate(5deg);
+          transform: rotate(5deg);
+}
+
+.card-container:nth-of-type(14) ~ .card-container {
+  display: none;
 }
 
 button.card-container:hover, button.card-container:focus {

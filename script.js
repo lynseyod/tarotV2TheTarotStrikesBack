@@ -11,12 +11,9 @@ const theTarotStrikesBack = {};
 theTarotStrikesBack.deck = [];
 
 // empty array of cards
-// helps 'set' past, present, future cards based on clicks
-theTarotStrikesBack.selectedCards = [
-  {position: 'the-past'},
-  {position: 'the-present'},
-  {position: 'the-future'},
-];
+theTarotStrikesBack.selectedCards = [];
+
+theTarotStrikesBack.clicks = 0 // clicks cannot reset even if cards are shuffled.
 
 // returns an array of the whole deck in random order
 // thank you tarot API for not making me write a randomize function
@@ -55,14 +52,15 @@ theTarotStrikesBack.setCards = (cards) => {
 }
 
 theTarotStrikesBack.displaySelectedCards = () => {
-  $('main').append(`<div class="results"></div>`)
-  theTarotStrikesBack.selectedCards.forEach((card) => {
-    $('.results').append(
-      `<div class="card-container ${card.position}">
-        ${card.cardHTML}
-      </div>`
-    )
-  })
+  console.log(theTarotStrikesBack.selectedCards)
+  // $('main').append(`<div class="results"></div>`)
+  // theTarotStrikesBack.selectedCards.forEach((card) => {
+  //   $('.results').append(
+  //     `<div class="card-container ${card.position}">
+  //       ${card.cardHTML}
+  //     </div>`
+  //   )
+  // })
 }
 
 theTarotStrikesBack.shuffle = () => {
@@ -79,19 +77,20 @@ theTarotStrikesBack.shuffle = () => {
 
 // event listener to select cards from the deck
 theTarotStrikesBack.cardSelect = () => {
-  let clicks = 0;
   $('.cards').on("click", ".card-container", function() {
-    if (clicks <= 2) { // only want to select 3 cards!
-      theTarotStrikesBack.selectedCards[clicks].cardHTML = ($(this)[0].innerHTML);
-      $(this).addClass("clickedIt"); //remove them from the stack visually
-      const thingIClicked = $(this);
-      console.log(thingIClicked.attr()); // remove them from the array actually
-      if (clicks === 2) {
+    if (theTarotStrikesBack.selectedCards.length < 3) { //need to get to 3 cards
+      // I need the index of the card I clicked (number attr)
+      // I need to slice (splice?!) out the card from the original deck...
+      const indexOfCardIClicked = $(this).attr("number");
+      console.log(indexOfCardIClicked)
+      theTarotStrikesBack.selectedCards.push($(this))
+      $(this).addClass("clickedIt") //remove from the stack visually
+      
+      if (theTarotStrikesBack.selectedCards.length == 3) {
         $('.card-container').unbind("click");
         theTarotStrikesBack.displaySelectedCards();
       }
     }
-    clicks++;
   })
 }
 
