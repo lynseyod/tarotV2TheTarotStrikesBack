@@ -1,10 +1,9 @@
 // STRETCH GOALS
   // randomize upright and reversed cards
-  // 'shuffle' function
-    // DO IT WITHOUT PINGING THE API AGAIN?
 //THOUGHTS
   // have the array of cards
   // on click, push that card to past/present/future etc
+  // the "stack" of cards is the shuffle button
 
 const theTarotStrikesBack = {};
 
@@ -76,6 +75,7 @@ theTarotStrikesBack.shuffle = () => {
 // need to remove selected card from the 'deck' array
 // so when we 'shuffle' it doesn't allow us to select the same card again.
 // can I use the index to set a hidden attribute?
+// can I slice/splice to actually REMOVE it from the deck?
 
 // event listener to select cards from the deck
 theTarotStrikesBack.cardSelect = () => {
