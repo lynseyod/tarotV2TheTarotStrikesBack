@@ -4,6 +4,8 @@
   // have the array of cards
   // on click, push that card to past/present/future etc
   // the "stack" of cards is the shuffle button
+  // 'selected cards' are pushing as an array of arrays of single objects.
+    // is there a way to make this one step instead of two?
 
 const theTarotStrikesBack = {};
 
@@ -59,11 +61,19 @@ theTarotStrikesBack.setCards = (cards) => {
 theTarotStrikesBack.displaySelectedCards = () => {
   console.log(theTarotStrikesBack.selectedCards);
   console.log(theTarotStrikesBack.deck)
+  const cardsFromSelectedCards = [];
+  theTarotStrikesBack.selectedCards.forEach((card) => {
+    cardsFromSelectedCards.push(card[0]);
+  })
+  console.log(cardsFromSelectedCards)
+  theTarotStrikesBack.setCards(cardsFromSelectedCards);
+  // $('main').html('')
   // $('main').append(`<div class="results"></div>`)
   // theTarotStrikesBack.selectedCards.forEach((card) => {
+  //   const {position, name, desc, meaning} = card[0];
   //   $('.results').append(
-  //     `<div class="card-container ${card.position}">
-  //       ${card.cardHTML}
+  //     `<div class="card-container ${position}">
+        
   //     </div>`
   //   )
   // })
