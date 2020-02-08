@@ -75,22 +75,33 @@ theTarotStrikesBack.shuffle = () => {
     // nothing should happen if we shuffle after we've selected our cards.
     if (theTarotStrikesBack.selectedCards.length < 3) {
       // first remove selected cards from the "shufflable" deck
+      // splicing the first card CHANGES THE CARDS.
+      // can I filter the deck and check if the card is ANY of the selected values?
       for (let i = 0; i < theTarotStrikesBack.cardsToSplice.length; i++) {
         const newDeck = theTarotStrikesBack.deck.filter((card) => {
-          return card != theTarotStrikesBack.cardsToSplice[i];
+          // check if it appears in cardsToSplice AT ALL.
+          let shouldIKeepIt = true;
+          theTarotStrikesBack.cardsToSplice.forEach((cardToSplice) => {
+            if (cardToSplice == card) {
+              shouldIKeepIt = false;
+            }
+          })
+          return shouldIKeepIt;
         })
-        theTarotStrikesBack.deck = newDeck;
+        console.log(newDeck)
+        // theTarotStrikesBack.deck = newDeck;
+        // console.log(theTarotStrikesBack.deck)
       }
       // now take what we're left with and shuffle it.
       // FISHER YATES
-      for (let i = theTarotStrikesBack.deck.length - 1; i > 0; i--) {
-        const randomNum = Math.floor(Math.random() * (i + 1));
-        const tempCard = theTarotStrikesBack.deck[i];
-        theTarotStrikesBack.deck[i] = theTarotStrikesBack.deck[randomNum];
-        theTarotStrikesBack.deck[randomNum] = tempCard;
-      }
-      theTarotStrikesBack.setCards(theTarotStrikesBack.deck);
-      document.location.reload();
+      // for (let i = theTarotStrikesBack.deck.length - 1; i > 0; i--) {
+      //   const randomNum = Math.floor(Math.random() * (i + 1));
+      //   const tempCard = theTarotStrikesBack.deck[i];
+      //   theTarotStrikesBack.deck[i] = theTarotStrikesBack.deck[randomNum];
+      //   theTarotStrikesBack.deck[randomNum] = tempCard;
+      // }
+      // theTarotStrikesBack.setCards(theTarotStrikesBack.deck);
+      // document.location.reload();
       // need to RELOAD. ugh where is react when I need it?
     }
   })
