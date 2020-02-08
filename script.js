@@ -1,11 +1,14 @@
 // STRETCH GOALS
   // randomize upright and reversed cards
 //THOUGHTS
-  // have the array of cards
-  // on click, push that card to past/present/future etc
-  // the "stack" of cards is the shuffle button
   // 'selected cards' are pushing as an array of arrays of single objects.
     // is there a way to make this one step instead of two?
+
+// WHERE I LEFT OFF
+  // can I push a "position" property?
+  // can I add a class that only appears on selected cards?
+  // new array of "positions"
+    // use value of 'click' to assign position[click] to selected cards
 
 const theTarotStrikesBack = {};
 
@@ -14,6 +17,9 @@ theTarotStrikesBack.deck = [];
 
 // empty array of cards
 theTarotStrikesBack.selectedCards = [];
+
+//array of positions to add to selected cards
+theTarotStrikesBack.positions = ["the-past","the-present","the-future",]
 
 // empty array of cards to SPLICE on shuffle
 // only used when "shuffle" button is clicked.
@@ -46,7 +52,10 @@ theTarotStrikesBack.getCards = () => {
 }
 
 theTarotStrikesBack.setCards = (cards) => {
+  console.log(cards);
   $('.cards').html('');
+  // if we aren't displaying cards, position can be anything. maybe just "deck"
+  // if we ARE displaying cards, use positions array to add attribute.
   cards.forEach((card, index) => {
     $('.cards').append(
       `<button number="${index}" class="card-container">
@@ -59,24 +68,11 @@ theTarotStrikesBack.setCards = (cards) => {
 }
 
 theTarotStrikesBack.displaySelectedCards = () => {
-  console.log(theTarotStrikesBack.selectedCards);
-  console.log(theTarotStrikesBack.deck)
   const cardsFromSelectedCards = [];
   theTarotStrikesBack.selectedCards.forEach((card) => {
     cardsFromSelectedCards.push(card[0]);
   })
-  console.log(cardsFromSelectedCards)
   theTarotStrikesBack.setCards(cardsFromSelectedCards);
-  // $('main').html('')
-  // $('main').append(`<div class="results"></div>`)
-  // theTarotStrikesBack.selectedCards.forEach((card) => {
-  //   const {position, name, desc, meaning} = card[0];
-  //   $('.results').append(
-  //     `<div class="card-container ${position}">
-        
-  //     </div>`
-  //   )
-  // })
 }
 
 theTarotStrikesBack.shuffle = () => {
