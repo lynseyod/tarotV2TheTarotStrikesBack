@@ -88,21 +88,17 @@ theTarotStrikesBack.shuffle = () => {
           })
           return shouldIKeepIt;
         })
-        console.log(newDeck)
-        // theTarotStrikesBack.deck = newDeck;
-        // console.log(theTarotStrikesBack.deck)
+        theTarotStrikesBack.deck = newDeck;
       }
       // now take what we're left with and shuffle it.
       // FISHER YATES
-      // for (let i = theTarotStrikesBack.deck.length - 1; i > 0; i--) {
-      //   const randomNum = Math.floor(Math.random() * (i + 1));
-      //   const tempCard = theTarotStrikesBack.deck[i];
-      //   theTarotStrikesBack.deck[i] = theTarotStrikesBack.deck[randomNum];
-      //   theTarotStrikesBack.deck[randomNum] = tempCard;
-      // }
-      // theTarotStrikesBack.setCards(theTarotStrikesBack.deck);
-      // document.location.reload();
-      // need to RELOAD. ugh where is react when I need it?
+      for (let i = theTarotStrikesBack.deck.length - 1; i > 0; i--) {
+        const randomNum = Math.floor(Math.random() * (i + 1));
+        const tempCard = theTarotStrikesBack.deck[i];
+        theTarotStrikesBack.deck[i] = theTarotStrikesBack.deck[randomNum];
+        theTarotStrikesBack.deck[randomNum] = tempCard;
+      }
+      theTarotStrikesBack.setCards(theTarotStrikesBack.deck);
     }
   })
 }
