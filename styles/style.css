@@ -246,7 +246,7 @@ header a {
   }
 }
 
-.cards {
+main {
   position: relative;
   height: 100vh;
   width: 90%;
@@ -256,8 +256,16 @@ header a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.cards {
+  height: 100%;
 }
 
 #shuffle,
@@ -269,164 +277,138 @@ header a {
   background-color: #202020;
 }
 
-#shuffle {
-  position: absolute;
-}
-
 .card-container {
   position: absolute;
-  overflow: auto;
+  top: 50%;
 }
 
-.card-container p {
+.card-container * {
   display: none;
 }
 
 .card-container:nth-of-type(1) {
   left: 15%;
   background: lightblue;
-  -webkit-transform: rotate(-10deg);
-          transform: rotate(-10deg);
+  -webkit-transform: translateY(-50%) rotate(-10deg);
+          transform: translateY(-50%) rotate(-10deg);
 }
 
 .card-container:nth-of-type(2) {
   left: 20%;
   background: palevioletred;
-  -webkit-transform: rotate(-5deg);
-          transform: rotate(-5deg);
+  -webkit-transform: translateY(-50%) rotate(-5deg);
+          transform: translateY(-50%) rotate(-5deg);
 }
 
 .card-container:nth-of-type(3) {
   left: 25%;
   background: rebeccapurple;
-  -webkit-transform: rotate(15deg);
-          transform: rotate(15deg);
+  -webkit-transform: translateY(-50%) rotate(15deg);
+          transform: translateY(-50%) rotate(15deg);
 }
 
 .card-container:nth-of-type(4) {
   left: 30%;
   background: blue;
-  -webkit-transform: rotate(10deg);
-          transform: rotate(10deg);
+  -webkit-transform: translateY(-50%) rotate(10deg);
+          transform: translateY(-50%) rotate(10deg);
 }
 
 .card-container:nth-of-type(5) {
   left: 35%;
   background: peachpuff;
-  -webkit-transform: rotate(-5deg);
-          transform: rotate(-5deg);
+  -webkit-transform: translateY(-50%) rotate(-5deg);
+          transform: translateY(-50%) rotate(-5deg);
 }
 
 .card-container:nth-of-type(6) {
   left: 40%;
   background: orange;
-  -webkit-transform: rotate(5deg);
-          transform: rotate(5deg);
+  -webkit-transform: translateY(-50%) rotate(5deg);
+          transform: translateY(-50%) rotate(5deg);
 }
 
 .card-container:nth-of-type(7) {
   left: 45%;
   background: blueviolet;
-  -webkit-transform: rotate(-10deg);
-          transform: rotate(-10deg);
+  -webkit-transform: translateY(-50%) rotate(-10deg);
+          transform: translateY(-50%) rotate(-10deg);
 }
 
 .card-container:nth-of-type(8) {
   left: 50%;
   background: red;
-  -webkit-transform: rotate(5deg);
-          transform: rotate(5deg);
+  -webkit-transform: translateY(-50%) rotate(5deg);
+          transform: translateY(-50%) rotate(5deg);
 }
 
 .card-container:nth-of-type(9) {
   left: 55%;
   background: white;
-  -webkit-transform: rotate(-5deg);
-          transform: rotate(-5deg);
+  -webkit-transform: translateY(-50%) rotate(-5deg);
+          transform: translateY(-50%) rotate(-5deg);
 }
 
 .card-container:nth-of-type(10) {
   left: 60%;
   background: lightgreen;
-  -webkit-transform: rotate(-10deg);
-          transform: rotate(-10deg);
+  -webkit-transform: translateY(-50%) rotate(-10deg);
+          transform: translateY(-50%) rotate(-10deg);
 }
 
 .card-container:nth-of-type(11) {
   left: 65%;
   background: limegreen;
-  -webkit-transform: rotate(5deg);
-          transform: rotate(5deg);
+  -webkit-transform: translateY(-50%) rotate(5deg);
+          transform: translateY(-50%) rotate(5deg);
 }
 
 .card-container:nth-of-type(12) {
   left: 70%;
   background: rosybrown;
-  -webkit-transform: rotate(15deg);
-          transform: rotate(15deg);
+  -webkit-transform: translateY(-50%) rotate(15deg);
+          transform: translateY(-50%) rotate(15deg);
 }
 
 .card-container:nth-of-type(13) {
   left: 75%;
   background: firebrick;
-  -webkit-transform: rotate(5deg);
-          transform: rotate(5deg);
+  -webkit-transform: translateY(-50%) rotate(5deg);
+          transform: translateY(-50%) rotate(5deg);
 }
 
 .card-container:nth-of-type(13) ~ .card-container {
   display: none;
 }
 
+.card-container.the-past,
+.card-container.the-present,
+.card-container.the-future {
+  position: static;
+  -webkit-transform: none;
+          transform: none;
+}
+
+.card-container.the-past h2,
+.card-container.the-present h2,
+.card-container.the-future h2 {
+  display: block;
+}
+
+.card-container.the-past:hover, .card-container.the-past:focus,
+.card-container.the-present:hover,
+.card-container.the-present:focus,
+.card-container.the-future:hover,
+.card-container.the-future:focus {
+  -webkit-transform: none;
+          transform: none;
+}
+
 button.card-container:hover, button.card-container:focus {
-  -webkit-transform: translateX(-20px) translateY(-20px);
-          transform: translateX(-20px) translateY(-20px);
+  -webkit-transform: translateX(-20px) translateY(-55%);
+          transform: translateX(-20px) translateY(-55%);
 }
 
 .clickedIt {
   display: none;
-}
-
-.results {
-  height: 100vh;
-  width: 90%;
-  margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  position: relative;
-}
-
-.card-container.the-past,
-.card-container.the-present,
-.card-container.the-future {
-  height: 80vh;
-  width: 40vh;
-}
-
-.card-container.the-past *,
-.card-container.the-present *,
-.card-container.the-future * {
-  display: block;
-}
-
-.card-container.the-past {
-  left: 0;
-}
-
-.card-container.the-present {
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-}
-
-.card-container.the-future {
-  left: 100%;
-  -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
 }

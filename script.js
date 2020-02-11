@@ -56,8 +56,6 @@ theTarotStrikesBack.getCards = () => {
 
 theTarotStrikesBack.setCards = (cards) => {
   $('.cards').html('');
-  // if we aren't displaying cards, position can be anything. maybe just "deck"
-  // if we ARE displaying cards, use positions array to add attribute.
   cards.forEach((card, index) => {
     $('.cards').append(
       `<button number="${index}" class="card-container">

@@ -11,10 +11,14 @@
 .card-container.the-past,
 .card-container.the-present,
 .card-container.the-future {
-  height: 80vh;
-  width: 40vh;
+  // height: 80vh;
+  // width: 40vh;
   * {
     display: block;
+  }
+  &:focus,
+  &:hover {
+    transform: none;
   }
 }
 
