@@ -1,8 +1,11 @@
 // STRETCH GOALS
   // randomize upright and reversed cards
+  // more complex spreads
 //THOUGHTS
   // 'selected cards' are pushing as an array of arrays of single objects.
     // is there a way to make this one step instead of two?
+  // my shuffle feature currently checks for 3 selected cards
+    // we should remove the button altogether when 3 cards are selected.
 
 // WHERE I LEFT OFF
   // can I push a "position" property?
@@ -52,7 +55,6 @@ theTarotStrikesBack.getCards = () => {
 }
 
 theTarotStrikesBack.setCards = (cards) => {
-  console.log(cards);
   $('.cards').html('');
   // if we aren't displaying cards, position can be anything. maybe just "deck"
   // if we ARE displaying cards, use positions array to add attribute.
@@ -67,12 +69,19 @@ theTarotStrikesBack.setCards = (cards) => {
   })
 }
 
+theTarotStrikesBack.setPositions = () => {
+  for (let i = 0; i <= theTarotStrikesBack.positions.length; i++) {
+    $(`.card-container:nth-of-type(${i + 1})`).addClass(`${theTarotStrikesBack.positions[i]}`);
+  }
+}
+
 theTarotStrikesBack.displaySelectedCards = () => {
   const cardsFromSelectedCards = [];
   theTarotStrikesBack.selectedCards.forEach((card) => {
     cardsFromSelectedCards.push(card[0]);
   })
   theTarotStrikesBack.setCards(cardsFromSelectedCards);
+  theTarotStrikesBack.setPositions();
 }
 
 theTarotStrikesBack.shuffle = () => {
@@ -97,7 +106,7 @@ theTarotStrikesBack.shuffle = () => {
         theTarotStrikesBack.deck = newDeck;
       }
       // now take what we're left with and shuffle it.
-      // FISHER YATES
+      // FISHER YATES algorithm!!
       for (let i = theTarotStrikesBack.deck.length - 1; i > 0; i--) {
         const randomNum = Math.floor(Math.random() * (i + 1));
         const tempCard = theTarotStrikesBack.deck[i];
