@@ -266,20 +266,30 @@ main {
 
 .cards {
   height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 #shuffle,
 .card-container {
-  height: 300px;
-  width: 150px;
+  height: 400px;
+  width: 200px;
   border: 3px solid black;
   border-radius: 10px;
   background-color: #202020;
+  color: white;
 }
 
 .card-container {
   position: absolute;
-  top: 50%;
 }
 
 .card-container * {
@@ -288,97 +298,89 @@ main {
 
 .card-container:nth-of-type(1) {
   left: 15%;
-  background: lightblue;
-  -webkit-transform: translateY(-50%) rotate(-10deg);
-          transform: translateY(-50%) rotate(-10deg);
+  -webkit-transform: rotate(-10deg);
+          transform: rotate(-10deg);
 }
 
 .card-container:nth-of-type(2) {
   left: 20%;
-  background: palevioletred;
-  -webkit-transform: translateY(-50%) rotate(-5deg);
-          transform: translateY(-50%) rotate(-5deg);
+  -webkit-transform: rotate(-5deg);
+          transform: rotate(-5deg);
 }
 
 .card-container:nth-of-type(3) {
   left: 25%;
-  background: rebeccapurple;
-  -webkit-transform: translateY(-50%) rotate(15deg);
-          transform: translateY(-50%) rotate(15deg);
+  -webkit-transform: rotate(15deg);
+          transform: rotate(15deg);
 }
 
 .card-container:nth-of-type(4) {
   left: 30%;
-  background: blue;
-  -webkit-transform: translateY(-50%) rotate(10deg);
-          transform: translateY(-50%) rotate(10deg);
+  -webkit-transform: rotate(10deg);
+          transform: rotate(10deg);
 }
 
 .card-container:nth-of-type(5) {
   left: 35%;
-  background: peachpuff;
-  -webkit-transform: translateY(-50%) rotate(-5deg);
-          transform: translateY(-50%) rotate(-5deg);
+  -webkit-transform: rotate(-5deg);
+          transform: rotate(-5deg);
 }
 
 .card-container:nth-of-type(6) {
   left: 40%;
-  background: orange;
-  -webkit-transform: translateY(-50%) rotate(5deg);
-          transform: translateY(-50%) rotate(5deg);
+  -webkit-transform: rotate(5deg);
+          transform: rotate(5deg);
 }
 
 .card-container:nth-of-type(7) {
   left: 45%;
-  background: blueviolet;
-  -webkit-transform: translateY(-50%) rotate(-10deg);
-          transform: translateY(-50%) rotate(-10deg);
+  -webkit-transform: rotate(-10deg);
+          transform: rotate(-10deg);
 }
 
 .card-container:nth-of-type(8) {
   left: 50%;
-  background: red;
-  -webkit-transform: translateY(-50%) rotate(5deg);
-          transform: translateY(-50%) rotate(5deg);
+  -webkit-transform: rotate(5deg);
+          transform: rotate(5deg);
 }
 
 .card-container:nth-of-type(9) {
   left: 55%;
-  background: white;
-  -webkit-transform: translateY(-50%) rotate(-5deg);
-          transform: translateY(-50%) rotate(-5deg);
+  -webkit-transform: rotate(-5deg);
+          transform: rotate(-5deg);
 }
 
 .card-container:nth-of-type(10) {
   left: 60%;
-  background: lightgreen;
-  -webkit-transform: translateY(-50%) rotate(-10deg);
-          transform: translateY(-50%) rotate(-10deg);
+  -webkit-transform: rotate(-10deg);
+          transform: rotate(-10deg);
 }
 
 .card-container:nth-of-type(11) {
   left: 65%;
-  background: limegreen;
-  -webkit-transform: translateY(-50%) rotate(5deg);
-          transform: translateY(-50%) rotate(5deg);
+  -webkit-transform: rotate(5deg);
+          transform: rotate(5deg);
 }
 
 .card-container:nth-of-type(12) {
   left: 70%;
-  background: rosybrown;
-  -webkit-transform: translateY(-50%) rotate(15deg);
-          transform: translateY(-50%) rotate(15deg);
+  -webkit-transform: rotate(15deg);
+          transform: rotate(15deg);
 }
 
 .card-container:nth-of-type(13) {
   left: 75%;
-  background: firebrick;
-  -webkit-transform: translateY(-50%) rotate(5deg);
-          transform: translateY(-50%) rotate(5deg);
+  -webkit-transform: rotate(5deg);
+          transform: rotate(5deg);
 }
 
 .card-container:nth-of-type(13) ~ .card-container {
   display: none;
+}
+
+.card-container:hover, .card-container:focus {
+  -webkit-transform: translateX(-20px) translateY(-20px);
+          transform: translateX(-20px) translateY(-20px);
 }
 
 .card-container.the-past,
@@ -402,11 +404,6 @@ main {
 .card-container.the-future:focus {
   -webkit-transform: none;
           transform: none;
-}
-
-button.card-container:hover, button.card-container:focus {
-  -webkit-transform: translateX(-20px) translateY(-55%);
-          transform: translateX(-20px) translateY(-55%);
 }
 
 .clickedIt {

@@ -131,6 +131,7 @@ theTarotStrikesBack.cardSelect = () => {
       $(this).addClass("clickedIt") //remove from the stack visually
       if (theTarotStrikesBack.selectedCards.length == 3) { //when we've selected 3, FINISH
         $('.card-container').unbind("click");
+        $('main').html('<div class="cards"></div>');
         theTarotStrikesBack.displaySelectedCards();
       }
     }
