@@ -8,10 +8,10 @@
     // we should remove the button altogether when 3 cards are selected.
 
 // WHERE I LEFT OFF
-  // can I push a "position" property?
-  // can I add a class that only appears on selected cards?
-  // new array of "positions"
-    // use value of 'click' to assign position[click] to selected cards
+  // add a 'display' feature on results cards
+    // on click: add-class "displayed" ("more info?")
+    // class opens an overlay?
+      // w/e that's a styling issue.
 
 const theTarotStrikesBack = {};
 
