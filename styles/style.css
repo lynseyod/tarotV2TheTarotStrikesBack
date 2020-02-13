@@ -386,7 +386,6 @@ main {
 .card-container.the-past,
 .card-container.the-present,
 .card-container.the-future {
-  position: static;
   -webkit-transform: none;
           transform: none;
 }
@@ -404,6 +403,39 @@ main {
 .card-container.the-future:focus {
   -webkit-transform: none;
           transform: none;
+}
+
+.card-container.the-past::before,
+.card-container.the-present::before,
+.card-container.the-future::before {
+  position: absolute;
+  top: -25px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.card-container.the-past {
+  left: 0;
+}
+
+.card-container.the-past::before {
+  content: 'The Past';
+}
+
+.card-container.the-present {
+  left: 50%;
+}
+
+.card-container.the-present::before {
+  content: 'The Present';
+}
+
+.card-container.the-future {
+  right: 0;
+}
+
+.card-container.the-future::before {
+  content: 'The Future';
 }
 
 .clickedIt {

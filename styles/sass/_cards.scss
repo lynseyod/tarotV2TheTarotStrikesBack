@@ -97,7 +97,6 @@ main {
 .card-container.the-past,
 .card-container.the-present,
 .card-container.the-future {
-  position: static;
   transform: none;
   h2 {
     display: block;
@@ -105,6 +104,30 @@ main {
   &:hover,
   &:focus {
     transform: none;
+  }
+  &::before {
+    position: absolute;
+    top: -25px;
+    transform: translateX(-50%);
+  }
+}
+
+.card-container.the-past {
+  left: 0;
+  &::before {
+    content: 'The Past';
+  }
+}
+.card-container.the-present {
+  left: 50%;
+  &::before {
+    content: 'The Present';
+  }
+}
+.card-container.the-future {
+  right: 0;
+  &::before {
+    content: 'The Future';
   }
 }
 
