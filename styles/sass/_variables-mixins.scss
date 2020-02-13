@@ -1,1 +1,7 @@
 $font: 'Nothing You Could Do', cursive;
+
+@mixin mq-desktop {
+  @media(min-width: 1100px) {
+    @content;
+  }
+}
